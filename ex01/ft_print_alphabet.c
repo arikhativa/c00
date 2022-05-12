@@ -1,9 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/12 16:23:32 by yrabby            #+#    #+#             */
+/*   Updated: 2022/05/12 16:24:40 by yrabby           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <unistd.h>
 
 void	ft_print_alphabet(void)
 {
-	char *alpha = "abcdefghijklmnopqrstuvwxyz";
-
-	write(1, alpha, 26);
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
 }
