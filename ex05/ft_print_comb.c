@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 11:03:14 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/13 12:50:35 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/13 12:59:36 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,47 +17,38 @@ void	print(char a, char b, char c)
 	write(1, &a, 1);
 	write(1, &b, 1);
 	write(1, &c, 1);
-	write(1, ", ", 2);
 }
 
 void	ft_print_comb(void)
 {
-	int stop;
-	char a;
-	char b;
-	char c;
+	char	a;
+	char	b;
+	char	c;
 
-	stop = 0;
 	a = '0';
 	b = '1';
 	c = '2';
-
-	while (stop++ < 200)
+	while (1)
 	{
 		print(a, b, c);
-
-		++c;
-		
-		if (c == ':')
+		if (++c == ':')
 		{
 			++b;
+			c = b + 1;
 			if (b == '9')
 			{
 				++a;
 				b = a + 1;
 				c = b + 1;
 				if (a == '8')
-				{
 					break ;
-				}
-			} else {
-				c = b + 1;
 			}
 		}
+		write(1, ", ", 2);
 	}
 }
 
-int	main()
+int	main(void)
 {
 	ft_print_comb();
 }
