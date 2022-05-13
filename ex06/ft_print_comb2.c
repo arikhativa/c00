@@ -6,58 +6,54 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 11:03:14 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/13 15:01:34 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/13 15:27:33 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print(char a, char b, char c, char d)
+void print(char n)
 {
-	write(1, &a, 1);
-	write(1, &b, 1);
+	char digit1;
+	char digit2;
+
+	digit1 = n % 10;
+	digit2 = (n - digit1) / 10;
+
+	digit1 += '0';
+	digit2 += '0';
+
+	write(1, &digit2, 1);
+	write(1, &digit1, 1);
+}
+
+void	print_numbers(char a, char b)
+{
+	print(a);
 	write(1, " ", 1);
-	write(1, &c, 1);
-	write(1, &d, 1);
+	print(b);
+
+	if ()
+	{
+		write(1, ", ", 2);
+	}
 }
 
 void	ft_print_comb2(void)
 {
 	char	a;
 	char	b;
-	char	c;
-	char	d;
 
-	a = '0';
-	b = '0';
-	c = '0';
-	d = '1';
-	while (1) //08 99, 09 0:,
+	a = 0;
+	while (a < 100)
 	{
-		print(a, b, c, d);
-
-		++d;
-
-		if (d == ':')
+		b = a + 1;
+		while (b < 100)
 		{
-			++c;
-			d = '0';
-			if (c == ':')
-			{
-				++b;
-				c = '0';
-				d = b + 1;
-
-				if (b == ':')
-				{
-					++a;
-					b = '0';
-				}
-			}
+			print_numbers(a, b);
+			++b;
 		}
-		if (a == ':')
-			break ;
-		write(1, ", ", 2);
+		++a;
 	}
 }
 
