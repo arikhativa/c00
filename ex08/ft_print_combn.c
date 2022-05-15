@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:29:34 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/15 15:06:12 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/15 15:43:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,65 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int	power(int n, int p)
+void	print_number(int arr[9], int n)
 {
-	int	tmp;
+	int		i;
+	char	ch;
 
-	tmp = n;
-	if (p == 0)
-		return (1);
-	while (p > 1)
+	i = 0;
+	while (i < n)
 	{
-		n *= tmp;
-		--p;
+		ch = arr[i] + '0';
+		write(1, &ch, 1);
+		++i;
 	}
-	return (n);
+
+	write(1, ", ", 2);
 }
 
-void	print_number(int nb, int len)
+void	increment(int arr[9], int n)
 {
-	char	ch;
-	int		p;
-
-	while (len)
+	++arr[n - 1];
+	if (arr[n - 1] == 10)
 	{
-		p = power(10, len - 1);
-		ch = (nb / p) + '0';
-		write(1, &ch, 1);
-		--len;
-		nb %= p;
+		increment(arr, n - 1);
+		arr[n - 1] = arr[n - 2] + 1;
 	}
+}
+
+void	increment_and_print(int arr[9], int n)
+{
+	if (arr[0] == 10)
+		return ;
+	increment(arr, n);
+	print_number(arr, n);
+	// increment_and_print(arr, n);
 }
 
 void ft_print_combn(int n)
 {
-	int lim;
-	int number;
+	int arr[9];
+	int	i;
 
-	lim = power(10, n);
-	number = 0;
-	while (number < lim)
+	i = 0;
+	
+	while (i < 9)
 	{
-		print_number(number, n);
-		if (number != (power(10, n) - 1))
-			write(1, ", ", 2);
-		++number;
+		arr[i] = i;
+		++i;
 	}
+
+	print_number(arr, n);
+
+	increment_and_print(arr, n);
 }
 
 int	main()
 {
-	ft_print_combn(3);
+	ft_print_combn(1);
+	printf("\n");
+	// ft_print_combn(8);
+	// printf("\n");
+	// ft_print_combn(9);
+	// printf("\n");
 }
