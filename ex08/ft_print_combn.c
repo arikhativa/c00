@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:29:34 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/15 15:43:46 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/15 16:20:03 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,12 @@ void	print_number(int arr[9], int n)
 		write(1, &ch, 1);
 		++i;
 	}
-
-	write(1, ", ", 2);
 }
 
 void	increment(int arr[9], int n)
 {
 	++arr[n - 1];
-	if (arr[n - 1] == 10)
+	if (arr[n - 1] == 10 && arr[0] < 11 - n )
 	{
 		increment(arr, n - 1);
 		arr[n - 1] = arr[n - 2] + 1;
@@ -42,11 +40,12 @@ void	increment(int arr[9], int n)
 
 void	increment_and_print(int arr[9], int n)
 {
-	if (arr[0] == 10)
-		return ;
-	increment(arr, n);
-	print_number(arr, n);
-	// increment_and_print(arr, n);
+	while (arr[0] < 11 - n)
+	{
+		write(1, ", ", 2);
+		increment(arr, n);
+		print_number(arr, n);
+	}
 }
 
 void ft_print_combn(int n)
@@ -69,10 +68,10 @@ void ft_print_combn(int n)
 
 int	main()
 {
-	ft_print_combn(1);
+	ft_print_combn(2);
 	printf("\n");
 	// ft_print_combn(8);
-	// printf("\n");
+	printf("\n");
 	// ft_print_combn(9);
-	// printf("\n");
+	printf("\n");
 }
