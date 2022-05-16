@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:19:32 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/15 12:28:26 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/16 11:03:55 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,14 @@ int	count_digit(int n)
 
 int	power(int n, int p)
 {
-	int	tmp;
+	int	ret;
 
-	tmp = n;
+	ret = n;
 	if (p == 0)
 		return (1);
-	while (p > 1)
-	{
-		n *= tmp;
-		--p;
-	}
-	return (n);
+	while (p-- > 1)
+		ret *= n;
+	return (ret);
 }
 
 void	ft_putnbr(int nb)
