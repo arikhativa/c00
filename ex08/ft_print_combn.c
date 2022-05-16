@@ -6,14 +6,15 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:29:34 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/16 10:17:31 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/16 10:29:15 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
 #define INCREMENT_LIM 10
 
-void	print_num(int arr[9], int n)
+void	print_arr(int arr[9], int n)
 {
 	int		i;
 	char	ch;
@@ -48,12 +49,12 @@ void	ft_print_combn(int n)
 		arr[i] = i;
 		++i;
 	}
-	print_num(arr, n);
+	print_arr(arr, n);
 	increment(arr, n, INCREMENT_LIM);
 	while (arr[0] != 11 - n)
 	{
 		write(1, ", ", 2);
-		print_num(arr, n);
+		print_arr(arr, n);
 		increment(arr, n, INCREMENT_LIM);
 	}
 }
