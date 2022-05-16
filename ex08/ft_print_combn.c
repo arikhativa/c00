@@ -6,22 +6,14 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:29:34 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/15 18:22:29 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/16 10:17:31 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <unistd.h>
-#include <stdio.h>
+#define INCREMENT_LIM 10
 
-int	stop(int arr[9], int n)
-{
-	// printf("arr[0] - %d\n", arr[0]);
-	// printf("n - %d\n", n);
-	return (arr[0] == 11 - n);
-}
-
-void	print_number(int arr[9], int n)
+void	print_num(int arr[9], int n)
 {
 	int		i;
 	char	ch;
@@ -45,20 +37,9 @@ void	increment(int arr[9], int n, int lim)
 	}
 }
 
-void	increment_and_print(int arr[9], int n)
+void	ft_print_combn(int n)
 {
-	while (!stop(arr, n))
-	{
-		print_number(arr, n);
-		increment(arr, n, 10);
-		if (!stop(arr, n))
-			write(1, ", ", 2);
-	}
-}
-
-void ft_print_combn(int n)
-{
-	int arr[9];
+	int	arr[9];
 	int	i;
 
 	i = 0;
@@ -67,15 +48,12 @@ void ft_print_combn(int n)
 		arr[i] = i;
 		++i;
 	}
-	increment_and_print(arr, n);
-}
-
-int	main()
-{
-	ft_print_combn(4);
-	printf("\n");
-	// ft_print_combn(8);
-	printf("\n");
-	// ft_print_combn(9);
-	printf("\n");
+	print_num(arr, n);
+	increment(arr, n, INCREMENT_LIM);
+	while (arr[0] != 11 - n)
+	{
+		write(1, ", ", 2);
+		print_num(arr, n);
+		increment(arr, n, INCREMENT_LIM);
+	}
 }
