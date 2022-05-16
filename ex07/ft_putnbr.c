@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:19:32 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/16 11:03:55 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/05/16 13:47:56 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int	power(int n, int p)
 	ret = n;
 	if (p == 0)
 		return (1);
-	while (p-- > 1)
+	while (p > 1)
+	{
 		ret *= n;
+		--p;
+	}
 	return (ret);
 }
 
@@ -44,6 +47,11 @@ void	ft_putnbr(int nb)
 	int		p;
 	char	ch;
 
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
 	if (nb < 0)
 	{
 		nb = nb * -1;
